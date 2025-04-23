@@ -1,0 +1,43 @@
+soal nomor 1
+void main() {
+  Map<String, List<String>> siswa = {
+    'kelasA': ['Andi', 'Budi', 'Cici'],
+    'kelasB': ['Dina', 'Eka']
+  };
+
+  print('Data siswa per kelas:');
+  siswa.forEach((kelas, daftarSiswa) {
+    print('$kelas: $daftarSiswa');
+  });
+}
+
+soal nomor 2
+void main() {
+  List<Map<String, dynamic>> produk = [
+    {'nama': 'Buku', 'harga': 10000},
+    {'nama': 'Pulpen', 'harga': 3000},
+    {'nama': 'Pensil', 'harga': 2000}
+  ];
+
+  print('Daftar produk:');
+  for (var item in produk) {
+    print('Nama: ${item['nama']}, Harga: ${item['harga']}');
+  }
+}
+
+soal nomor 3
+void main() {
+  List<int> angka = [1, 2, 3, 4, 5];
+
+  // Tambah elemen
+  angka.add(6); // Menambahkan 6 di akhir list
+
+  // Edit elemen (misal ubah angka indeks ke-2)
+  angka[2] = 30;
+
+  // Hapus elemen (misal hapus angka 4)
+  angka.remove(4);
+
+  print('List angka sekarang: $angka');
+}
+
