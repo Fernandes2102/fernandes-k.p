@@ -1,0 +1,118 @@
+soal nomor 1
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: ListViewBuilderExample(),
+  ));
+}
+
+class ListViewBuilderExample extends StatelessWidget {
+  final List<Map<String, String>> data = [
+    {'name': 'Natsu Dragneel', 'subtitle': 'Team Natsu'},
+    {'name': 'Lucy Heartfilia', 'subtitle': 'Team Natsu'},
+    {'name': 'Gray Fullbuster', 'subtitle': 'Team Natsu'},
+    {'name': 'Erza Scarlet', 'subtitle': 'Team Natsu'},
+    {'name': 'Wendy Marvell', 'subtitle': 'Sky Sister'},
+    {'name': 'Happy', 'subtitle': 'Exceed'},
+    {'name': 'Carla', 'subtitle': 'Exceed'},
+    {'name': 'Gajeel Redfox', 'subtitle': 'Iron Dragon'},
+  ];
+
+  String getInitials(String name) {
+    List<String> words = name.split(' ');
+    return words.map((e) => e[0]).take(2).join();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("ListView.Builder")),
+      body: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          String initials = getInitials(data[index]['name']!);
+          return ListTile(
+            leading: CircleAvatar(
+              child: Text(initials),
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+            ),
+            title: Text(data[index]['name']!),
+            subtitle: Text(data[index]['subtitle']!),
+          );
+        },
+      ),
+    );
+  }
+}
+
+soal nomor 2
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: ImageColumnExample(),
+  ));
+}
+
+class ImageColumnExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                child: Image.network(
+                  'https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/74/2024/06/24/wp3467277-anime-fairy-tail-wallpaper-1106229048.png',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 200,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: Center(child: Icon(Icons.broken_image, size: 50, color: Colors.grey)),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '23 April 2025, 10:00 WIB',
+                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Pertarungan Epik di Dunia Fairy Tail!',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Natsu dan timnya kembali dengan aksi luar biasa untuk melindungi Guild Fairy Tail dari ancaman baru. '
+                      'Diperlihatkan juga kekuatan baru Erza dan kerja sama menakjubkan antara Lucy dan Aquarius dalam pertempuran terbaru mereka!',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
